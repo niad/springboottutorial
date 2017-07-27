@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}" />
+</head>
+<body>
+
+
+
+    <div>
+
+        <!--/*
+            th:text 속성을 사용할 경우 html5 validation-check 에서 걸리므로 data- 속성을 이용
+
+            <span th:text="'총 ' + ${totalCount} + '건'">총 10건</span>
+        */-->
+        <span data-th-text="'총 ' + ${totalCount} + '건'">총 10건</span>
+    </div>
+    <table>
+
+
+
+    </table>
+
+
+    <script type="text/javascript" src="webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>

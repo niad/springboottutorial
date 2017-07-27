@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}" />
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Spring Boot</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="starter-template">
+        <!--/*
+
+            Commment
+
+        */-->
+
+
+        <!--/*
+
+            messages.properties를 이용한 i18n 적용
+            http://www.baeldung.com/spring-boot-internationalization
+
+        */-->
+        <form>
+            <span th:text="#{lang.change}"></span>:
+            <select id="locales">
+                <option value=""></option>
+                <option value="en" th:text="#{lang.eng}">English</option>
+                <option value="fr" th:text="#{lang.fr}">France</option>
+            </select>
+        </form>
+
+
+        <h1>Spring Boot Web Thymeleaf Example</h1>
+        <h2>
+            <div th:text="'Message: ' + ${message}"></div>
+            <div th:text="#{welcome.message}">Welcome</div>
+        </h2>
+
+        <h3>Thymeleaf tutorial</h3>
+        <ul>
+            <li><a th:href="@{/product}">Loop</a></li>
+
+        </ul>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+<script type="text/javascript" src="webjars/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $("#locales").change(function () {
+            var selectedOption = $('#locales').val();
+            if (selectedOption != ''){
+                window.location.replace('?lang=' + selectedOption);
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>
