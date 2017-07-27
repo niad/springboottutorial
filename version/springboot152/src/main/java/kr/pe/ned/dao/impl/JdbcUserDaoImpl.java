@@ -10,8 +10,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import kr.pe.ned.dao.UserDao;
 import kr.pe.ned.model.User;
+import org.springframework.stereotype.Repository;
 
-//@Repository
+@Repository
 public class JdbcUserDaoImpl implements UserDao {
 
 	private JdbcTemplate jdbcTemplate;
