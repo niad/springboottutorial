@@ -8,11 +8,12 @@
     <groupId>kr.pe.ned</groupId>
     <artifactId>jsptemplate</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+    <name>Jsp</name>
+    <description>Jsp Template Engine</description>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.4.RELEASE</version>
+        <version>1.5.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
