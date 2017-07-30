@@ -8,23 +8,63 @@
 </head>
 <body>
 
+    <div th:include="layout/header :: topMenu">Top Menu</div>
+    <div th:include="layout/menu :: leftMenu">Left Menu</div>
+
+    <div>
+        <h3>검색영역</h3>
+        <select>
+            <option value="">전체</option>
+            <option value="VALUE" th:each="item : ${productTypes}" th:value="${item.code}" th:text="${item.name}">VALUE</option>
+        </select>
+    </div>
 
 
     <div>
-
         <!--/*
             th:text 속성을 사용할 경우 html5 validation-check 에서 걸리므로 data- 속성을 이용
-
-            <span th:text="'총 ' + ${totalCount} + '건'">총 10건</span>
+            <span data-th-text="'총 ' + ${totalCount} + '건'">총 10건</span>
         */-->
-        <span data-th-text="'총 ' + ${totalCount} + '건'">총 10건</span>
+        <span th:text="'총 ' + ${totalCount} + '건'">총 10건</span>
     </div>
-    <table>
+    <table style="width:98%;">
+        <colgroup>
+            <col style="width: 70px;" />
+            <col style="width: 150px;" />
+            <col />
+            <col style="width: 150px;" />
+            <col style="width: 150px;" />
+        </colgroup>
+        <thead>
+            <tr>
+                <td>번호</td>
+                <td>이름</td>
+                <td>비고</td>
+                <td>가격</td>
+                <td>생성일</td>
+            </tr>
+        </thead>
+        <tbody>
 
-
-
+            <th:block th:if="${products != null and products.size() > 0}">
+            <tr th:each="item, iter : ${products}">
+                <td th:text="${iter.count}">1</td>
+                <td th:text="${item.name}">상품명</td>
+                <!--/* <td th:text="${item.note}">비고</td> */-->
+                <td th:inline="text">[[${item.note}]]</td>
+                <td th:if="${item.price == 0}" th:text="'-'">0</td>
+                <td th:unless="${item.price == 0}" th:text="${#numbers.formatDecimal(item.price, 0, 'COMMA', 2, 'POINT')}">100,000.00</td>
+                <td th:text="${#dates.format(item.createdDate, 'yyyy-MM-dd')}">2017-07-13</td>
+            </tr>
+            </th:block>
+            <th:block th:if="${products.size() == 0}">
+                <tr><td colspan="5">데이터가 없습니다.</td></tr>
+            </th:block>
+        </tbody>
     </table>
 
+
+    <div th:include="layout/footer :: copy">Footer</div>
 
     <script type="text/javascript" src="webjars/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
