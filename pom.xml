@@ -17,6 +17,7 @@
         <module>version/springboot152</module>
         <module>template/jsp</module>
         <module>template/thymeleaf</module>
+        <module>db/blogapp</module>
     </modules>
 
 
